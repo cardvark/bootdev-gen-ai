@@ -7,11 +7,17 @@ load_dotenv()
 api_key = os.environ.get("GEMINI_API_KEY")
 
 client = genai.Client(api_key=api_key)
-print('running...')
+# print('running...')
+
+content_request = sys.argv
+if len(content_request) < 2:
+    print("No prompt provided.")
+    sys.exit(1)
+    
 
 response = client.models.generate_content(
     model="gemini-2.0-flash-001", 
-    contents="Why is Boot.dev such a great place to learn backend development? Use one paragraph maximum."
+    contents=content_request[1]
     )
 
 print(response.text)
