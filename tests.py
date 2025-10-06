@@ -1,6 +1,7 @@
 from functions.get_files_info import *
 from functions.get_file_content import *
 from functions.write_file import *
+from functions.run_python_file import *
 
 # # print ("1. -------------------------")
 # get_files_info("calculator", ".")
@@ -22,11 +23,6 @@ from functions.write_file import *
 # print ("4. -------------------------")
 # get_file_content("calculator", "pkg/does_not_exist.py")
 
-write_tests = [
-    ("calculator", "lorem.txt", "wait, this isn't lorem ipsum"),
-    ("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet"),
-    ("calculator", "/tmp/temp.txt", "this should not be allowed"),
-]
 
 def test_printer(file_func, tests):
     count = 1
@@ -35,4 +31,20 @@ def test_printer(file_func, tests):
         print(file_func(*test))
         count += 1
 
-test_printer(write_file, write_tests)
+write_tests = [
+    ("calculator", "lorem.txt", "wait, this isn't lorem ipsum"),
+    ("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet"),
+    ("calculator", "/tmp/temp.txt", "this should not be allowed"),
+]
+
+python_tests = [
+    ("calculator", "main.py"),
+    ("calculator", "main.py", ["3 + 5"]),
+    ("calculator", "tests.py"),
+    ("calculator", "../main.py"),
+    ("calculator", "nonexistent.py"),
+]
+
+# test_printer(write_file, write_tests)
+
+test_printer(run_python_file, python_tests)

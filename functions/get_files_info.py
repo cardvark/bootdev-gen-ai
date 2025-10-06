@@ -7,13 +7,11 @@ def get_files_info(working_directory, directory="."):
     # print(abs_full_path)
 
     if not abs_full_path.startswith(os.path.abspath(working_directory)):
-        print(f'Error: Cannot list "{directory}" as it is outside the permitted working directory')
-        return
+        return f'Error: Cannot list "{directory}" as it is outside the permitted working directory'
     
     if not os.path.isdir(full_path):
         # print(full_path)
-        print(f'Error: "{directory}" is not a directory')
-        return
+        return f'Error: "{directory}" is not a directory'
     
     try: 
         for item in os.listdir(full_path):

@@ -8,12 +8,10 @@ def get_file_content(working_directory, file_path):
     print(full_path)
 
     if not abs_full_path.startswith(os.path.abspath(working_directory)):
-        print(f"Error: Cannot read '{file_path}' as it is outside the permitted working directory")
-        return
-
+        return f"Error: Cannot read '{file_path}' as it is outside the permitted working directory"
+        
     if not os.path.isfile(full_path):
-        print(f"Error: File not found or is not a regular file:'{file_path}'")
-        return
+        return f"Error: File not found or is not a regular file:'{file_path}'"
 
     try:
         with open (full_path, 'r') as file:
