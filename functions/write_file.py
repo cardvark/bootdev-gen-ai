@@ -1,4 +1,5 @@
 import os
+from google.genai import types
 
 def write_file(working_directory, file_path, content):
     full_path = os.path.join(working_directory, file_path)
@@ -17,3 +18,22 @@ def write_file(working_directory, file_path, content):
 
     except Exception as e:
         print(f"Error: {e}")
+
+
+schema_write_file = types.FunctionDeclaration(
+    name="write_file",
+    description="Writes to the selected file, replacing all contents if any exist. Returns confirmation of execution, along with number of characters written.",
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "file_path": types.Schema(
+                type=types.Type.STRING,
+                description="The path to the file to be written.",
+            ),
+            "content": types.Schema(
+                type=types.Type.STRING,
+                description="Content to be written in the selected file."
+            ),
+        },
+    ),
+)
