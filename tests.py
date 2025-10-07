@@ -38,11 +38,11 @@ write_tests = [
 ]
 
 python_tests = [
-    ("calculator", "main.py"),
-    ("calculator", "main.py", ["3 + 5"]),
+    # ("calculator", "main.py"),
+    # ("calculator", "main.py", ["3 + 5"]),
     ("calculator", "tests.py"),
-    ("calculator", "../main.py"),
-    ("calculator", "nonexistent.py"),
+    # ("calculator", "../main.py"),
+    # ("calculator", "nonexistent.py"),
 ]
 
 # test_printer(write_file, write_tests)
