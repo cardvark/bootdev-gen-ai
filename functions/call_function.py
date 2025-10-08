@@ -48,7 +48,7 @@ def call_function(function_call_part, verbose=False):
     function_result = function_dict[function_name](working_directory, **function_args)
 
     return types.Content(
-        role="tool",
+        role="user",
         parts=[
             types.Part.from_function_response(
                 name=function_name,

@@ -15,13 +15,16 @@ def get_files_info(working_directory, directory="."):
         return f'Error: "{directory}" is not a directory'
     
     try: 
+        files_info = []
         for item in os.listdir(full_path):
             # print(f"Parsing {item}")
             pathed_item = os.path.join(full_path, item)
             size = os.path.getsize(pathed_item)
-            print(f"- {item}: file_size={size} bytes, is_dir={os.path.isdir(pathed_item)}")
+            files_info.append(f"- {item}: file_size={size} bytes, is_dir={os.path.isdir(pathed_item)}")
+        return "\n".join(files_info)
     except Exception as e:
         print(f"Error: {e}")
+
 
 schema_get_files_info = types.FunctionDeclaration(
     name="get_files_info",
